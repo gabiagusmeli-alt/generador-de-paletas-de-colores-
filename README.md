@@ -1,13 +1,35 @@
-# Generador de Paletas — Despliegue
+# Generador de Paletas de Colores
 
-Instrucciones rápidas para desplegar esta aplicación Flask en producción.
+[![Python](https://img.shields.io/badge/Python-3.10%2B-blue.svg)](https://www.python.org/)
+[![Estado](https://img.shields.io/badge/Estado-Desarrollo-orange.svg)]()
+[![Demo](https://img.shields.io/badge/Demo-Enlace%20pr%C3%B3ximamente-lightgrey.svg)]()
 
-Requisitos:
+Resumen
 
-- Python 3.10+
-- `pip` instalado
+Aplicación web desarrollada con Flask para generar paletas de colores armoniosas y exportables. Pensada como proyecto de portafolio: interfaz limpia, resultados visuales y opciones de exportación para uso en diseño y frontend.
 
-Instalar dependencias:
+Captura / Presentación
+
+Incluye una captura o GIF del sitio para darle presencia en tu portafolio. Sugerencia de ruta y marcado para añadir una imagen:
+
+```markdown
+![Captura de ejemplo](static/screenshot.png)
+```
+
+Características principales
+
+- Generación de paletas aleatorias y por reglas de color (monocromático, análogo, complementario, etc.).
+- Copiado con un clic de valores HEX y preview en tiempo real.
+- Exportación en formatos útiles (CSS, JSON, SCSS, Tailwind).
+- Interfaz responsive, estilo moderno y enfoque en usabilidad para diseñadores.
+
+Tecnologías
+
+- Backend: Flask
+- Frontend: HTML5, CSS3, JavaScript (vanilla)
+- Plantillas: Jinja2
+
+Instalación (entorno local)
 
 ```bash
 python -m venv .venv
@@ -15,25 +37,62 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-Ejecutar localmente con Gunicorn:
+Ejecución local
 
 ```bash
-export FLASK_SECRET_KEY="tu-secreto"
-export PORT=5000
-gunicorn wsgi:application --workers 3 --bind 0.0.0.0:5000
+# Ejecuta la app directamente
+python app.py
+
+# O con Flask en modo desarrollo
+export FLASK_APP=app.py
+export FLASK_ENV=development
+flask run
 ```
 
-Despliegue rápido (Heroku):
+Uso rápido
 
-```bash
-heroku create
-git push heroku main
-heroku config:set FLASK_SECRET_KEY="tu-secreto"
-heroku ps:scale web=1
+- Abre `http://127.0.0.1:5000/` en tu navegador.
+- Haz clic en "Generar" para obtener una nueva paleta.
+- Copia valores HEX con los botones de la interfaz.
+
+Personalización para tu portafolio
+
+- Ajusta `static/style.css` para adaptar tipografías, colores y espaciado.
+- Añade una captura en `static/screenshot.png` y descomenta su referencia arriba para que se muestre en el README.
+
+Estructura del proyecto
+
+```
+generador-de-paletas-de-colores/
+├── app.py
+├── requirements.txt
+├── static/
+│   ├── style.css
+│   └── app.js
+└── templates/
+	└── index.html
 ```
 
-Notas de seguridad:
+Despliegue
 
-- Mantén `FLASK_SECRET_KEY` en variables de entorno.
-- Usa HTTPS en producción.
-- Considera añadir un reverse proxy (NGINX) y configurar cabeceras adicionales.
+Esta guía no incluye `gunicorn` ni `Procfile` ya que el despliegue previsto será en PythonAnywhere. Si más adelante deseas desplegar en otro servicio, puedo añadir instrucciones específicas.
+
+Agregar el enlace del proyecto en vivo
+
+Deja un espacio en el README para el enlace en vivo. Cuando tengas la URL, reemplaza el badge "Demo: Enlace próximamente" por el enlace directo:
+
+```markdown
+[Demo en vivo](https://tu-app.pythonanywhere.com)
+```
+
+Contribuciones
+
+- Issues y pull requests bienvenidos. Describe claramente el cambio y mantén los PRs pequeños.
+
+Contacto
+
+- Añade tu email o enlace a tu portafolio si quieres que los visitantes te contacten.
+
+Licencia
+
+Indica la licencia del proyecto (por ejemplo, MIT) si procede.
