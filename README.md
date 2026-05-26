@@ -75,7 +75,29 @@ generador-de-paletas-de-colores/
 
 Despliegue
 
-Esta guía no incluye `gunicorn` ni `Procfile` ya que el despliegue previsto será en PythonAnywhere. Si más adelante deseas desplegar en otro servicio, puedo añadir instrucciones específicas.
+Esta aplicación ya está lista para ejecutarse con Gunicorn en entornos de producción.
+
+1. Instala dependencias:
+
+```bash
+pip install -r requirements.txt
+```
+
+2. Crea un archivo `.env` local desde el ejemplo:
+
+```bash
+cp .env.example .env
+```
+
+3. Ajusta `FLASK_SECRET_KEY` en `.env` con una cadena segura.
+
+4. Ejecuta con Gunicorn:
+
+```bash
+gunicorn app:app --config gunicorn_conf.py
+```
+
+Si usas un servicio como Heroku o Railway, el `Procfile` ya apunta a Gunicorn correctamente.
 
 Agregar el enlace del proyecto en vivo
 
